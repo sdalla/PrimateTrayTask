@@ -162,9 +162,10 @@ void loop() {
   angleOut = map(angle, 0, 360, 0, 255);
   dacWrite(dacOUT, angleOut); //write value to dac
   //if the pellet is gone, turn on the LED
-  digitalWrite(ledOUT, resFilt<photoResCutoff); // turn on LED if pellet isnt there
+  digitalWrite(ledOUT, resValue<photoResCutoff); // turn on LED if pellet isnt there
   digitalWrite(builtinLED, !(resValue<photoResCutoff));
   
+
   /*
   // Printing Stuff, for debugging
   Serial.print(resValue); //USB print the photores value, just for debugging
@@ -194,7 +195,7 @@ void loop() {
   display.drawString(0, 32, "Position:");
   display.drawString(80, 32, "Reach:");
   display.drawString(0, 32+16, String(angle)+"*");
-  display.drawString(80, 32+16, String(resFilt<photoResCutoff));
+  display.drawString(80, 32+16, String(resValue<photoResCutoff));
   display.display();
   display.clear();
   
